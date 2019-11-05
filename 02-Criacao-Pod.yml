@@ -1,0 +1,12 @@
+# Declaração de um Pod para rodar MongoDB, em YAML.
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nome-do-pod
+spec:
+  containers:
+    - name: nome-do-container
+      image: mongo:latest
+      ports:
+        - containerPort: 27017
