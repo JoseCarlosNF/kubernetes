@@ -1,4 +1,4 @@
-# Pra tudo tem limite !
+# Pra tudo tem limite!!
 Limitação de recursos de um Pod.
 ---
 
