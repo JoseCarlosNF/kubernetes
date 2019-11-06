@@ -1,4 +1,4 @@
-#  Pod vs. Deployment
+#  :boxing_glove: Pod vs. Deployment
 Diferenças entre a criação de um Pod e um Deployment.
 ---
 
@@ -21,7 +21,7 @@ Criação de um **Deployment**, por linha de comando
 kubectl create deployment [nome-do-deployment] --image=[imagem-do-container]
 ```
 
-## Considerações
+## :clipboard: Considerações
 A grande diferença dá-se no momento em que tentamos apagar os pods:
 
 ```

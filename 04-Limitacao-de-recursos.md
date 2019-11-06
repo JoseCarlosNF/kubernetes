@@ -1,6 +1,4 @@
-# Pra tudo tem limite!!
-Limitação de recursos de um Pod.
----
+# :stop_sign: Limitação de recursos de um Pod.
 
 Não temos poder computacional ilimitado, por isso devemos, até mesmo por questões de segurança e custo financeiro, limitar a quantidade de recursos que as aplicações poderão utilizar.
 

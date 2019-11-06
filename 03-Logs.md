@@ -1,6 +1,4 @@
-# Apareceu o miserável!!
-Visualização de logs dos Pods
----
+# :newspaper: Visualização de logs dos Pods
 
 Comando a ser executado no master.
 
