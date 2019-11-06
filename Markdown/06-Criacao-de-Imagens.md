@@ -25,3 +25,6 @@ COPY [diretorio-local] /usr/local/apache2/htdocs
 Com essas duas linhas construímos uma imagem que disponibiliza um site de forma simples, sem nenhum tipo de autenticação ou configuração mais avançada.
 
 > A imagem criada está no Docker Hub e pode ser baixada.
+```
+docker pull josecarlosnf/site-estatico
+```
