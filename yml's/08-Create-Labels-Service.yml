@@ -1,0 +1,32 @@
+# Definindo a Label "app=simple-node-api-label"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-node-api-pod
+  labels:
+    app: simple-node-api-label
+spec:
+  containers:
+  - name: simple-node-api-container
+    image: josecarlosnf/simple-node-api
+    env:
+      - name: PORT
+        value: "8080"
+    ports:
+      - containerPort: 8080
+        name: porta-api
+
+---
+# Definindo o Service "simple-node-api-service"
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-node-api-service
+spec:
+  selector:
+    app: simple-node-api-label
+  ports:
+    - protocol: TCP
+      port: 8085
+      targetPort: porta-api
