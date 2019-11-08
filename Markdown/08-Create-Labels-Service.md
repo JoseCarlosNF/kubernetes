@@ -14,7 +14,7 @@ Agora que sabemos o que os Services podem acessar vários Pods, para expor o Ser
 
 Essa declaração de acesso é feita através dos ***Labels***, que é a única maneira de agrupar Pods. Dessa forma, quando os containers que pertencem aos Pods, com uma determinada label, precisarem ser destruídos, ao retornarem, serão acessados pelo mesmo Service de seus antecedentes, pois esses novos containers estão em um Pod com as Labels que garantem o acesso ao Service.
 
-O ***Label*** nada mais é que uma etiqueta, para agrupamento de Pods. Podem ser utilizadas de diversas formas, desde o acesso a um Service ou mesmo como flag seletora para o comando ```kubectl```, como exemplificado a seguir.
+O ***Label*** nada mais é que uma etiqueta, para agrupamento de Pods. Podem ser utilizadas de diversas formas, desde o acesso a um Service ou mesmo como flag seletora para o comando `kubectl`, como exemplificado a seguir.
 
 ```
 kubectl get pod -l app=simple-node-api-label
@@ -65,3 +65,10 @@ O Service "simple-node-api-service" é definido para escutar a porta 8085 e envi
 O acesso as aplicações é feito através de um gateway, servidor de proxy reverso, ele por sua vez será responsável por apontar as rotas para os pods a partir da requisição. Existem várias alternativas para realizar esse trabalho, uma das mais famosas é o servidor web [NGINX](https://www.nginx.com/).
 
 Por se tratar-se de uma arquitetura comum vamos utilizar o **[nginx-ingress-controller](https://github.com/kubernetes/ingress-nginx/)**, que basicamente trata-se de um conjunto de arquivos de manifesto, similar ao usado para criar pods e services, anteriormente, porem com toda a estrutura de proxy reverso.
+
+# :couch_and_lamp: Conclusão
+O Label nada mais é que uma etiqueta, para agrupamento de Pods. Podem ser utilizadas de diversas formas, desde o acesso a um Service ou mesmo como flag seletora para o comando `kubectl`, como exemplificado a seguir.
+
+```
+kubectl get pod -l app=simple-node-api-label
+```
