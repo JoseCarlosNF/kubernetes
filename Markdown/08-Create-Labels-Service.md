@@ -1,16 +1,16 @@
 # :door: Como expor o Pod para fora do cluster
 
-Até o momento os pods e seus containers apenas são visíveis dentro do cluster. Para expor os pods para a "internet" utilizaremos um ***[proxy reverso](#fastforward-proxy-reverso)*** para apontar para um ***[Service](#buildingconstruction-services)***, que é camada de interação com os pods agrupados por um ***[Label](#label-labels)***.
+Até o momento os pods e seus containers apenas são visíveis dentro do cluster. Para expor os pods para a "internet" utilizaremos um ***[Ingress](#fastforward-proxy-reverso)*** para apontar para um ***[Service](#buildingconstruction-services)***, que é camada de interação com os pods agrupados por um ***[Label](#label-labels)***.
 
 ## :construction: Services
 
-Sabemos que contêineres são extremamente voláteis/efémeros, portanto não temos como atribuir IPs para cada Pod, nesse momento entra em ação os Services.
+Sabemos que contêineres são voláteis/efémeros, portanto não temos como atribuir IPs para cada Pod, nesse momento entra em ação os Services.
 
-O ***Services*** é a camada que garante a orquestração da atribuição de ips, internamente, para os Pod. Desta forma, para expormos uma determinada aplicação, na verdade estamos expondo o Service equivalente aos Pods que ela acessa.
+O ***Services*** é a camada que garante a orquestração da atribuição de ips, internamente, para os pods. Desta forma, ao expormos uma aplicação, na verdade estamos expondo o service correspondente aos pods dela.
 
 ## :label: Labels
 
-Agora que sabemos o que os Services podem acessar vários Pods, para expor o Service precisamos definir quais Pods ele acessa.
+Agora que sabemos o que os services podem acessar vários pods, para expor o service precisamos definir quais pods ele acessa.
 
 Essa declaração de acesso é feita através dos ***Labels***, que é a única maneira de agrupar Pods. Dessa forma, quando os containers que pertencem aos Pods, com uma determinada label, precisarem ser destruídos, ao retornarem, serão acessados pelo mesmo Service de seus antecedentes, pois esses novos containers estão em um Pod com as Labels que garantem o acesso ao Service.
 
@@ -60,8 +60,7 @@ spec:
 
 O Service "simple-node-api-service" é definido para escutar a porta 8085 e enviar as requisições para a porta nomeada como "porta-api", dos Pods com a Label "app: simple-node-api-label".
 
-# :fast_forward: Proxy Reverso
+# :flight_arrival: Ingress
+É por meio dele que as aplicações, que estão rodando no cluster, são acessadas do lado de fora, ele é responsável por apontar as rotas para os Services, que apontam para os pods que contenham as labels correspondentes do Service, tudo isso a partir de uma requisição http. Existem várias alternativas para realizar esse trabalho, uma das mais famosas é o servidor web [NGINX](https://www.nginx.com/).
 
-O acesso as aplicações é feito através de um gateway, servidor de proxy reverso, ele por sua vez será responsável por apontar as rotas para os pods a partir da requisição. Existem várias alternativas para realizar esse trabalho, uma das mais famosas é o servidor web [NGINX](https://www.nginx.com/).
-
-Por se tratar-se de uma arquitetura comum vamos utilizar o **[nginx-ingress-controller](https://github.com/kubernetes/ingress-nginx/)**, que basicamente trata-se de um conjunto de arquivos de manifesto, similar ao usado para criar pods e services, anteriormente, porem com toda a estrutura de proxy reverso.
+Por se tratar-se de uma arquitetura comum vamos utilizar o **[nginx-ingress-controller](https://github.com/kubernetes/ingress-nginx/)**, que basicamente trata-se de um conjunto de arquivos de manifesto, similar ao usado para criar pods e services, anteriormente.
