@@ -34,6 +34,8 @@ Esse tipo de armazenamento funciona em duas etapas:
 
 Antes de poder ser utilizado/consumido esse armazenamento deve ser disponibilizado. Com eles é tudo ou nada, se tivermos dois PVs o primeiro com 100GB e o segundo com 50GB. Então um PVC requisitando 75GB, esse PVC será alocado no primeiro. Posteriormente temos um segundo PVC requisitando 100GB, esse não será atendido pois não há um PV com espaço suficiente, visto que um PVC só pode estar "linkado" com um único PV.
 
+<p style="font-size:20px;text-align:center;">Declaração de um EmptyDir <p\>
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -61,5 +63,4 @@ volumes:
   - name: nome-do-volume
     emptyDir: {}
 ```
-
-<p style="font-size:20px;font-style:italic;font-family:monospace;text-align:center">Declaração de um EmptyDir <p\>
+ 
