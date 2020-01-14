@@ -15,7 +15,7 @@ Armazenamento em nuvem. Os maiores players da área são, Amazon, Google e Micro
 
 Utiliza o armazenamento local do nó. De forma bem simples, trata-se de uma especie de compartilhamento entre a máquina onde os pods são criados e o próprio pod. Dessa forma cria-se uma afinidade entre o pod e o nó, uma vez que se esse pod for destruído e recriado em um segundo nó seus dados permaneceram no primeiro nó.
 
-Essa afinidade por ser provida por meio dos [labels](./08-Create-Labels-Service#:label:-Labels). Fazendo com que derterminados pods apenas sejam criados em um nó especifico.
+Essa afinidade por ser provida por meio dos [labels](08-Create-Labels-Service#:label:-Labels). Fazendo com que derterminados pods apenas sejam criados em um nó especifico.
 
 ## EmptyDir Volume
 
