@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: counter-api
+  labels:
+    name: counter-api
+spec:
+  containers:
+  - name: counter-api
+    image: "khaosdoctor/node-counter-api"
+    env:
+      - name: PORT
+        value: '8080'
+      - name: COUNTER_DIRECTORY
+        value: /etc/couter-volume
+    ports:
+      - containerPort: 8080
+        name: porta-api
+    volumeMounts:
+      - mountPath: /etc/couter-volume/
+        name: nome-do-volume
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+  volumes:
+    - name: nome-do-volume
+      emptyDir: {}

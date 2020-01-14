@@ -33,3 +33,33 @@ Esse tipo de armazenamento funciona em duas etapas:
 2. PVC - Persistent Volume Claim (Consumo)
 
 Antes de poder ser utilizado/consumido esse armazenamento deve ser disponibilizado. Com eles é tudo ou nada, se tivermos dois PVs o primeiro com 100GB e o segundo com 50GB. Então um PVC requisitando 75GB, esse PVC será alocado no primeiro. Posteriormente temos um segundo PVC requisitando 100GB, esse não será atendido pois não há um PV com espaço suficiente, visto que um PVC só pode estar "linkado" com um único PV.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: exemplo-volume
+  labels:
+    name: exemplo-volume
+spec:
+  containers:
+  - name: exemplo-volume
+    image: "khaosdoctor/simple-node-api"
+    env:
+      - name: PORT
+        value: '8080'
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8080
+    volumeMounts:
+      - mountPath: /usr/src/app
+        name: nome-do-volume
+volumes:
+  - name: nome-do-volume
+    emptyDir: {}
+```
+
+<p style="font-size:20px;font-style:italic;font-family:monospace;text-align:center">Declaração de um EmptyDir <p\>
