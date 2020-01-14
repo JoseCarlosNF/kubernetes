@@ -30,3 +30,4 @@ spec:
     - protocol: TCP
       port: 8085
       targetPort: porta-api
+
