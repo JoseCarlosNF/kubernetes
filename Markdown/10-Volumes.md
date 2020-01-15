@@ -2,10 +2,11 @@
 
 Tendo vista a volatilidade dos conteiners, na arquitetura do kubernetes,há várias abstrações para o armazenamento de informações. Tais como:
 
-1. [Volumes Cloud](#Volume-Cloud)
-2. [HostPath Volume](#HostPath-Volume)
-3. [EmptyDir Volume](#EmptyDir-Volume)
-4. [Persistent Volume](#Persistent-Volume)
+- [:floppy_disk: Volumes](#floppydisk-volumes)
+  - [Volume Cloud](#volume-cloud)
+  - [HostPath Volume](#hostpath-volume)
+  - [EmptyDir Volume](#emptydir-volume)
+  - [Persistent Volume](#persistent-volume)
 
 ## Volume Cloud
 
@@ -19,7 +20,7 @@ Essa afinidade por ser provida por meio dos [labels](./08-Create-Labels-Service.
 
 ## EmptyDir Volume
 
-Uma mistura de volatilidade com persistencia. Resumidamente, fica em pé enquanto o pod está em pé. Nesse tipo, caso algun dos containers do pod venha a falhar seus dados não serão perdidos, isso porque estão a salvos enquanto o pod estiver funcionando. Se o pod vier a falhar (leia-sê *restartar*), os dados serão perdidos.
+Uma mistura de volatilidade com persistencia. Resumidamente, fica em pé enquanto o pod está em pé. Nesse tipo, caso algun dos containers do pod venha a falhar seus dados não serão perdidos, isso porque estão a salvos enquanto o pod estiver funcionando. Se o pod vier a falhar (leia-sê _restartar_), os dados serão perdidos.
 
 Esse tipo de armazenamento é indicado para cache e coisas temporarias e não deve ser usado para dados sensiveis, a fim de evitar problemas com suas perdas.
 
@@ -45,22 +46,23 @@ metadata:
     name: exemplo-volume
 spec:
   containers:
-  - name: exemplo-volume
-    image: "khaosdoctor/simple-node-api"
-    env:
-      - name: PORT
-        value: '8080'
-    resources:
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
-    ports:
-      - containerPort: 8080
-    volumeMounts:
-      - mountPath: /usr/src/app
-        name: nome-do-volume
+    - name: exemplo-volume
+      image: "khaosdoctor/simple-node-api"
+      env:
+        - name: PORT
+          value: "8080"
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - mountPath: /usr/src/app
+          name: nome-do-volume
 volumes:
   - name: nome-do-volume
     emptyDir: {}
 ```
- 
+
+[:building_construction: Persistent Volume Local](./10.1-Persistent-Volume-Local.md)

@@ -1,0 +1,69 @@
+# ! A label 'pv-role: database', para afinidade do node deve ser adicionada ao node.
+# * kubectl edit node <nome-do-node>
+---
+# Persistent Volume 1GB
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv
+  namespace: default
+  labels:
+    role: database
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: ""
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete # Política de Recuperação
+  local:
+    path: /mnt/mongo_data # Local da montagem do volume no disco local
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: pv-role
+              operator: In
+              values:
+                - database
+---
+# Persistent Volume Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-claim
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 500Mi
+  selector:
+    matchLabels:
+      role: database
+---
+# Pod que irá consumir o PVC
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mongo-pod
+  labels:
+    role: database
+spec:
+  volumes:
+    - name: mongo-volume
+      persistentVolumeClaim:
+        claimName: mongo-claim
+  containers:
+    - name: mongo-container
+      image: mongo
+      ports:
+        - name: mongo-port
+          containerPort: 27017
+      volumeMounts:
+        - name: mongo-volume
+          mountPath: /data/db
