@@ -64,3 +64,5 @@ O Service "simple-node-api-service" é definido para escutar a porta 8085 e envi
 É por meio dele que as aplicações, que estão rodando no cluster, são acessadas do lado de fora, ele é responsável por apontar as rotas para os Services, que apontam para os pods que contenham as labels correspondentes do Service, tudo isso a partir de uma requisição http. Existem várias alternativas para realizar esse trabalho, uma das mais famosas é o servidor web [NGINX](https://www.nginx.com/).
 
 Por se tratar-se de uma arquitetura comum vamos utilizar o **[nginx-ingress-controller](https://github.com/kubernetes/ingress-nginx/)**, que basicamente trata-se de um conjunto de arquivos de manifesto, similar ao usado para criar pods e services, anteriormente.
+
+**[Arquivo com as declarações usadas](../yml's/08-Create-Labels-Service.yml)**

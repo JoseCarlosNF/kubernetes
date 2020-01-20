@@ -19,3 +19,5 @@ spec:
       ports:
       - containerPort: 8080
 ```
+
+**[Arquivo com as declarações usadas](../yml's/07-Utilizando-imagem-criada.yml)**

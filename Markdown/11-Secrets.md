@@ -118,3 +118,6 @@ usuarioseguroparaaplicacao
 
 ## Conclusão
 Com as secrets impulsionamos o controle de versão para a infraestrutura, uma vez que podemos publica-la sem preocupações com a exposição de credências. Visto que estão em um local diferente, e quando necessárias podem ser consumidas ou criadas sem impactos no código da infraestrutura em si.
+
+**[Arquivo com as declarações usadas](../yml's/11.Secrets.yml)**
+

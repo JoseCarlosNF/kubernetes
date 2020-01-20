@@ -26,3 +26,5 @@ spec:
 ```
 
 No caso em questão, o Pod está sendo instruído a operar com 10% da CPU e 128MB de mémoria, e limitado a usar no máximo 25% da CPU e 256MB de mémoria.
+
+**[Arquivo com as declarações usadas](../yml's/04-limitacao-Pod.yml)**
