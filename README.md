@@ -4,7 +4,7 @@
 
 Estudo de aplicação e utilização de orquestração de contêineres com Kubernetes.
 
-## Sumario
+## :bookmark_tabs: Sumario
 
 1. [Deploy vs. Create Pod](Markdown/02-Deploy-Vs-Create-Pod.md)
 2. [Visualização de Logs](Markdown/03-Logs.md)
@@ -16,3 +16,10 @@ Estudo de aplicação e utilização de orquestração de contêineres com Kuber
    1. [Tipos de Services](Markdown/08.1-Tipos-de-Service.md)
 8. [Ingress](Markdown/09-Ingress-NGINX.md)
    1. [Tipos de Ingress](Markdown/09.1-Tipos-de-Ingress.md)
+9. [Volumes](Markdown/10-Volumes.md)
+   1.  [Volume Persistente Local](Markdown/10.1-Persistent-Volume-Local.md)
+10. [Secrets](Markdown/11-Secrets.md)
+
+## :open_book: Documentação Official (Inglês)
+    
+1. [Conceitos](https://kubernetes.io/docs/concepts/)
